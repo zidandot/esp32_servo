@@ -4,7 +4,7 @@
 #include <WiFi.h>
 
 const char* ssid = "GMRT_C20";
-const char* password = "Alfan5";
+const char* password = "SubtimAlfan5";
 
 WiFiServer server(80);
 
