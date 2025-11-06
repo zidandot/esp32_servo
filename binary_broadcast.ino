@@ -1,6 +1,3 @@
-// ESP32 WiFi Server - Binary Pulse Broadcaster
-// Upload this code to the first ESP32
-
 #include <WiFi.h>
 
 const char* ssid = "GMRT_C20";
@@ -18,7 +15,6 @@ void setup() {
   
   // Create Access Point
   WiFi.softAP(ssid, password);
-  Serial.println("=== ESP32 Binary Pulse Server ===");
   Serial.print("AP IP address: ");
   Serial.println(WiFi.softAPIP());
   
@@ -67,5 +63,5 @@ void loop() {
     Serial.println("Waiting for client connection...\n");
   }
   
-  delay(10);
+  delay(20);
 }
