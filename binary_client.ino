@@ -1,6 +1,3 @@
-// ESP32 WiFi Client - Responds to Binary Pulses
-// Upload this code to the second ESP32
-
 #include <WiFi.h>
 
 const char* ssid = "GMRT_C20";
@@ -18,7 +15,7 @@ void setup() {
   Serial.println("ON");
   Serial.println("OFF");
   
-  // Connect to Server's Access Point
+  // Connect to Access Point
   WiFi.begin(ssid, password);
   Serial.print("Connecting to ");
   Serial.println(ssid);
@@ -28,7 +25,6 @@ void setup() {
     Serial.print(".");
   }
   
-  Serial.println("\n=== ESP32 Responsive Client ===");
   Serial.print("Connected! Client IP: ");
   Serial.println(WiFi.localIP());
   
@@ -45,7 +41,7 @@ void setup() {
 }
 
 void respondToPulse(String pulse) {
-  pulse.trim();
+  pulse.trim(); // Removes potential trailing whitespace
   
   // Display received pulse
   Serial.print("Received #");
@@ -117,5 +113,5 @@ void loop() {
     }
   }
   
-  delay(10);
+  delay(50);
 }
