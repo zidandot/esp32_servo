@@ -53,7 +53,7 @@ void respondToPulse(String pulse) {
   if (pulse == "1") {
     Serial.print("1 [HIGH] ████████");
     
-    Serial.println("LED ON");
+    Serial.println("ON");
     highCount++;
     response = "ACK:HIGH_RECEIVED";
     
@@ -61,7 +61,7 @@ void respondToPulse(String pulse) {
     Serial.print("0 [LOW]  ________");
     
     // Response to LOW pulse
-    Serial.println("LED OFF");
+    Serial.println("OFF");
     lowCount++;
     response = "ACK:LOW_RECEIVED";
     
@@ -100,7 +100,7 @@ void loop() {
   
   // Reconnect if connection lost
   if (!client.connected()) {
-    Serial.println("LED OFF");
+    Serial.println("OFF");
     delay(1000);
     Serial.println("\n! Disconnected from server !");
     Serial.println("Reconnecting...");
