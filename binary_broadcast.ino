@@ -55,7 +55,7 @@ void loop() {
         lastSendTime = millis();
       }
       
-      delay(10);
+      delay(100);
     }
     
     client.stop();
@@ -63,5 +63,5 @@ void loop() {
     Serial.println("Waiting for client connection...\n");
   }
   
-  delay(20);
+  delay(50);
 }
