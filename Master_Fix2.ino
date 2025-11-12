@@ -4,7 +4,7 @@
 #include <Wire.h>
 Servo servoBase, servoShoulder, servoElbow, servoWrist, servoGripper; // Can be added with another servo
 
-#define SOUND_SENSOR 32
+#define SOUND_SENSOR 34
 #define servoBasePin 13
 #define servoShoulderPin 12
 #define servoElbowPin 14
@@ -19,7 +19,6 @@ int direction5 = 90;
 
 int threshold = 2000; 
 int pulse;
-int pulseCounter = 0;
 int highCount = 0;
 int moveCount = 0;
 
@@ -38,11 +37,15 @@ void setup() {
   servoElbow.write(direction3);
   servoWrist.write(direction4);
   servoGripper.write(direction5);
+
+  analogReadResolution(12); // ESP32 uses 12-bit ADC (0-4095)
+  analogSetAttenuation(ADC_11db); // Full range 0-3.3V
 }
 
 void moveServo() {
   int soundValue = analogRead(SOUND_SENSOR);
   Serial.println(soundValue);
+  delay(50);
   pulse = (soundValue > threshold) ? 1 : 0;
 
   if (pulse == 1) { 
@@ -88,8 +91,6 @@ void moveServo() {
 }
 
 void loop() {
-  pulseCounter++;
-  delay(1000);
   moveServo();
-  delay(100);
+  delay(1000);
 }
